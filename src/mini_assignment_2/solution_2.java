@@ -6,6 +6,8 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 
+// Scenario 1 in Headless mode
+
 public class solution_2 {
     public static void main(String[] args) throws InterruptedException {
         System.setProperty("webdriver.chrome.driver", "C:\\Users\\himanshukumar7\\Downloads\\chromedriver_win32\\chromedriver.exe");
@@ -16,7 +18,7 @@ public class solution_2 {
         Thread.sleep(3000);
 
         driver.get("https://phptravels.com/demo");
-        //driver.manage().window().maximize();
+        driver.manage().window().maximize();
         String title1 = driver.getTitle();
         System.out.println("Page title is : " +title1);
         if(title1.contains("PHPTRAVELS")){
@@ -32,6 +34,9 @@ public class solution_2 {
 
         WebElement login = driver.findElement(By.xpath("/html/body/header/div/nav/a[4]"));
         login.click();
+        for(String winHandle : driver.getWindowHandles()){
+            driver.switchTo().window(winHandle);
+        }
         String title2 = driver.getTitle();
         System.out.println("Page title is : " + title2);
         if(title1==title2){

@@ -31,9 +31,14 @@ public class solution_1 {
 
         WebElement login = driver.findElement(By.xpath("/html/body/header/div/nav/a[4]"));
         login.click();
+
+        for(String winHandle : driver.getWindowHandles()){
+            driver.switchTo().window(winHandle);
+        }
+
         String title2 = driver.getTitle();
         System.out.println("Page title is : " + title2);
-        if(title1==title2){
+        if(title2.contains(title1)){
             System.out.println("Pass");
         }
         else{
