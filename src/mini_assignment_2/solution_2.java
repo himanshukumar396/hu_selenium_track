@@ -39,7 +39,7 @@ public class solution_2 {
         }
         String title2 = driver.getTitle();
         System.out.println("Page title is : " + title2);
-        if(title1==title2){
+        if(title2.contains("Login")){
             System.out.println("Pass");
         }
         else{
