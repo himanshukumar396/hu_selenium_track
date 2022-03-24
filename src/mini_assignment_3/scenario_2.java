@@ -14,10 +14,14 @@ public class scenario_2 {
 
         //Thread.sleep(3000);
 
-        driver.get(" https://jqueryui.com/droppable/ ");
-        Actions builder = new Actions(driver);
-        WebElement from = driver.findElement(By.xpath("//*[@id=\"draggable\"]"));
-        WebElement to = driver.findElement(By.xpath("//*[@id=\"droppable\"]"));
-        builder.dragAndDrop(from, to).build().perform();
+
+        driver.manage().window().maximize();
+        driver.get("https://jqueryui.com/droppable/");
+        Actions act=new Actions(driver);
+        driver.switchTo().frame(driver.findElement(By.xpath("//iframe[@class='demo-frame']")));
+        act.dragAndDropBy(driver.findElement(By.xpath("//div[@id=\"draggable\"]")),153,26).perform();
+        driver.quit();
     }
-}
+
+    }
+
